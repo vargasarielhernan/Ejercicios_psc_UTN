@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+
+<body>
+    <h1>Ejercicio 2 Vargas Ariel</h1>
+    <script>
+        var autoString = '[{"auto":"toyota-supra","velocidad_maxima":190},{"auto":"Toyota-ae86","velocidad_maxima":220},{"auto":"ford-focus","velocidad_maxima":170},{"auto":"toyota-corolla","velocidad_maxima":200}]';
+        var autoJSON = JSON.parse(autoString);
+        console.log(autoJSON);
+        
+        var acuVelMax = 0;
+        var contadorVelMax = 0;
+        var toyoMax=0;
+        var autoMax;
+
+        for (let index = 0; index < autoJSON.length; index++) {
+        autos=autoJSON[index];
+        acuVelMax+=autos.velocidad_maxima;
+        contadorVelMax++;
+        autosmin=autos.auto.toLowerCase();
+
+            if(autos.auto.indexOf("toyota") && (toyoMax<autos.velocidad_maxima))
+                {
+                toyoMax=autos.velocidad_maxima;
+                autoMax=autos.auto;
+                }
+        
+        }
+        console.log("La velocidad maxima promedio es: ", (acuVelMax/contadorVelMax));
+        console.log("El toyota que mas velocidad maxima pose es: ",autoMax, "con ",toyoMax, "km");
+
+    </script>
+</body>
+
+</html>
