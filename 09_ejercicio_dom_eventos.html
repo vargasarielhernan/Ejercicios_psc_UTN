@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        label, input {
+            display: block;
+        }
+
+        td, th {
+            border: 1px solid black;
+        }
+
+        main {
+            height: 80vh;
+            display: flex;
+        }
+
+        main section {
+            width: 50%;
+        }
+
+    </style>
+
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_SharedWithUsers msdt:dt="string">Programaci�n Web HTML y CSS3-Nivel 1- Extensi�n Universitaria-UTN-FRD Members</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_SharedWithUsers>
+<mso:SharedWithUsers msdt:dt="string">25;#Programaci�n Web HTML y CSS3-Nivel 1- Extensi�n Universitaria-UTN-FRD Members</mso:SharedWithUsers>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+    <h1> Ejercicio Integrador </h1>
+    <main>
+        <section>
+            <h2> Formulario </h2>
+            <form id="formulario" action="">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre">
+                
+                <label for="apellido">Apellido</label>
+                <input type="text" name="apellido">
+    
+                <label for="dni">DNI</label>
+                <input type="number" name="dni">
+
+                <input type="submit" value="Enviar">
+            </form>
+        </section>
+        <section>
+            <h2> Tabla </h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Eduardo</td>
+                        <td>Denis</td>
+                        <td>37229772</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <script>
+            var formularioNodo = document.querySelector("#formulario");
+
+            formularioNodo.addEventListener("submit", function (event) {
+                console.log("prueba submit");
+                event.preventDefault();
+                document.getElementById("formulario").reset();
+            })
+
+        </script>
+    </main>
+    
+</body>
+</html>
