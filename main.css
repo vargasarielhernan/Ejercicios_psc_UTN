@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+.card{
+    text-align: center;
+    width: 200px;
+    margin: 200px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 1px 10px rgb(0,0,0,0.2);
+    cursor: default;
+    transition: all 400ms ease;
+}
+.card .producto{
+    margin: 5px 5px;
+}
+.card:hover{
+    box-shadow: 5px 5px 20px rgb(0,0,0,0.4);
+    transform: translateY(-3%);
+}
+.card .inferior a{
+    text-decoration: none;
+    display: flex;
+    padding: 10px;
+    margin: 10px 10px;
+    border: 1px solid #2fb4cc;
+    border-radius: 4px;
+    transition: all 400ms ease;
+
+}
+.card .inferior a:hover{
+    background:#2fb4cc ;
+    color: #fff;
+}
+.card img{
+    width: 100%;
+    height: 200px;
+    width: 200px;
+    margin: 10px 0px;
+    object-fit: cover;
+}
+.card .inferior {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    margin: 5px 5px;
+}
