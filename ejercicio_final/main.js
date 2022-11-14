@@ -4,7 +4,8 @@ console.log("correecto");
 var peticion= new XMLHttpRequest();
 peticion.open("GET", "productos.json", true);
 var total=0;
-
+var contador=0;
+var mayor=0;
 //obtener los productos del JSON
 peticion.addEventListener("readystatechange",function(){
     if(this.readyState==4&&this.status==200){
@@ -51,15 +52,31 @@ peticion.addEventListener("readystatechange",function(){
 
             botonComprar.addEventListener("click", function(){
                 total = total + precio;
+                contador+=1;
                 //console.log("total: ", total);
                 // Crear fila en carrito
+                var listaProductos= document.querySelector("#productos");
+                var cantidades= document.querySelector("#cantidades");
+                cantidades.innerText=contador;
+                var totalPro= document.querySelector("#total");
+                totalPro.innerText=total;
                 var fila = document.createElement("tr");
                 var tdNombre = document.createElement("td");
                 tdNombre.innerText = nombre;
+                var tdOrden=document.createElement("td");
+                tdOrden.innerText=contador;
                 var tdPrecio = document.createElement("td");
                 tdPrecio.innerText = "$"+precio;
+
+                var carrito=document.createElement("tr");
+                var cantidad=document.createElement("td");
+                cantidad.innerText=contador;
+                var precioTotal=document.createElement("td");
+                precioTotal.innerText=total;
+                fila.appendChild(tdOrden);
                 fila.appendChild(tdNombre);
                 fila.appendChild(tdPrecio);
+                listaProductos.append(fila);
 
                 // Logica para eliminar un producto del carrito
                 var tdBorrar = document.createElement("td");
@@ -70,13 +87,30 @@ peticion.addEventListener("readystatechange",function(){
                 tdBorrar.appendChild(botonBorrar);
                 fila.appendChild(tdBorrar);
 
-                botonBorrar.addEventListener("click", function (event) {
-                    console.log(event.target.parentElement.parentElement.remove());
-                    total = total - precio;
-                    //console.log("total: ", total);
-            });
+                tdbody= document.querySelector("tbody")
+                tdbody.appendChild(fila);
+                //If para identificar producto mayor
+                if(precio>mayor){
+                    mayor=precio;
+                    filamayor= fila;
+                }
+                var botonCaro =document.querySelector("button");
+                botonCaro.addEventListener("click",function(){
+                    filamayor.className = "resaltar";
+                    console.log(filamayor);
+                });
 
-                document.querySelector("tbody").appendChild(fila);
+                botonBorrar.addEventListener("click", function (event) {
+                    event.target.parentElement.parentElement.remove();
+                    total = total - precio;
+                    contador-=1;
+                    var listaProductos= document.querySelector("#productos");
+                var cantidades= document.querySelector("#cantidades");
+                cantidades.innerText=contador;
+                var totalPro= document.querySelector("#total");
+                totalPro.innerText=total;
+                    //console.log("total: ", total);
+                });
                 });
             });
         }

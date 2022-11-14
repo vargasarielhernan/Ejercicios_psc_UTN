@@ -12,13 +12,27 @@
         <h1> Titulo Principal </h1>
         <div class="productos"></div>
         <div class="carrito">
+            <h1>Carrito de Compras</h1>
             <table>
                 <thead>
+                    <th>#</th>
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th></th>
                 </thead>
+                <tbody id="productos">
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <th>Cantidades</th>
+                    <th>Total</th>
+                    <th></th>
+                </thead>
                 <tbody>
+                    <td id="cantidades"></td>
+                    <td id="total"></td>
+                    <td> <button>Producto mas caro</button> </td>
                 </tbody>
             </table>
         </div>
