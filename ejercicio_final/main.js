@@ -85,6 +85,7 @@ peticion.addEventListener("readystatechange",function(){
                 var botonBorrar = document.createElement("a");
                 botonBorrar.setAttribute("href","#");
                 botonBorrar.innerText = "x";
+                botonBorrar.setAttribute("class","botonBorrar");
                 tdBorrar.appendChild(botonBorrar);
                 fila.appendChild(tdBorrar);
                 tdbody= document.querySelector("tbody")

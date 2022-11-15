@@ -2,8 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
-
 }
 body{
     width: 100%;
@@ -16,6 +14,7 @@ body{
 }
 h1{
     text-align: center;
+    margin-top: 5px;
 }
 .card{
     text-align: center;
@@ -26,7 +25,7 @@ h1{
     margin: 5px;
     overflow: hidden;
     display: inline-block;
-    border-radius: 4px;
+    border-radius: 8px;
     flex-direction: column;
     background-image:linear-gradient(#ffffff ,#f0f0f0) ;
     box-shadow: 0px 1px 10px rgb(0,0,0,0.2);
@@ -35,23 +34,25 @@ h1{
 }
 .card .productos{
     margin: 5px 5px;
-    width: 60vw;
+    width: 1160px;
 }
 .card:hover{
     box-shadow: 5px 5px 20px rgb(0,0,0,0.4);
     transform: translateY(-3%);
-    border-radius: 4px;
+    border-radius: 8px;
 }
 a{
     text-decoration: none;
+    color:black;
     margin: 5px;
+    height: 95px;
+    width: 75px;
     justify-content:center;
     align-items: center;
     display: flex;
     padding: 10px;
     border: 1px solid black;
     border-radius: 4px;
-    width: 10vw;
     transition: all 400ms ease;
 }
 a:hover{
@@ -63,9 +64,8 @@ p{margin: 5px;}
 .card img{
     height: 200px;
     width: 250px;
-    margin: 5px 0px;
     object-fit: contain;
-    box-shadow: 5px 5px 20px rgb(0,0,0,0.4);
+    border-radius: 10px;
 }
 .card .inferior {
     display: flex;
@@ -75,10 +75,8 @@ p{margin: 5px;}
 }
 .carrito{
     display: flex;
-    width: 40vw;
+    width: 850px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
     margin: 5px;
     overflow: hidden;
     flex-direction: column;
@@ -87,11 +85,65 @@ p{margin: 5px;}
     cursor: default;
     transition: all 400ms ease;
 }
+.carrito:hover{
+    box-shadow: 5px 5px 20px rgb(0,0,0,0.4);
+    transform: translateY(-3%);
+    border-radius: 4px;
+}
+.botonBorrar{
+    text-decoration: none;
+    color:black;
+    margin: 5px;
+    height: 15px;
+    width: 15px;
+    justify-content:center;
+    align-items: center;
+    display: flex;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    transition: all 400ms ease;
+}
+button{
+    text-decoration: none;
+    color:black;
+    margin: 5px;
+    height: 40px;
+    width: 110px;
+    justify-content:center;
+    align-items: center;
+    display: flex;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    transition: all 400ms ease;
+}
+button:hover{
+    background:black ;
+    color: #fff;
+}
 .container{
     display: flex;
-    
-    background-image:linear-gradient(#000000 ,#201d1e) ;
+    background-image:linear-gradient(#BBD2C5 ,#536976 , #292E49) ;
 }
 .resaltar{
-    background-color: aqua;
+    background-color: #292E49;
+    border-radius: 8px;
+    color: white;
+}
+table{
+	background-color: white;
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td{
+	padding: 20px;
+}
+
+thead{
+	background-color: #536976;
+	border-bottom: solid 5px #292E49;
+	color: white;
 }
