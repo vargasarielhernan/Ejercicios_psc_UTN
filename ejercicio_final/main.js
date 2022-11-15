@@ -63,8 +63,6 @@ peticion.addEventListener("readystatechange",function(){
                 var fila = document.createElement("tr");
                 var tdNombre = document.createElement("td");
                 tdNombre.innerText = nombre;
-                var tdOrden=document.createElement("td");
-                tdOrden.innerText=contador;
                 var tdPrecio = document.createElement("td");
                 tdPrecio.innerText = precio;
 
@@ -73,7 +71,6 @@ peticion.addEventListener("readystatechange",function(){
                 cantidad.innerText=contador;
                 var precioTotal=document.createElement("td");
                 precioTotal.innerText=total;
-                fila.appendChild(tdOrden);
                 fila.appendChild(tdNombre);
                 fila.appendChild(tdPrecio);
                 listaProductos.append(fila);
@@ -104,8 +101,8 @@ peticion.addEventListener("readystatechange",function(){
                 var botonCaro =document.querySelector("button");
                 botonCaro.addEventListener("click",function(){
                     rowtd=fila.getElementsByTagName("td");
-                    if(parseInt(rowtd[2].innerHTML)==mayor){
-                        rowtd[2].classList.add("resaltar");
+                    if(parseInt(rowtd[1].innerHTML)==mayor){
+                        rowtd[1].classList.add("resaltar");
                     }
                 console.log("el mayor es:", mayor);
                 });
