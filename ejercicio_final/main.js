@@ -1,5 +1,5 @@
 //corroborar que esta enlazado correctamente
-console.log("correecto");
+//console.log("correecto");
 
 var peticion= new XMLHttpRequest();
 peticion.open("GET", "productos.json", true);
@@ -66,7 +66,7 @@ peticion.addEventListener("readystatechange",function(){
                 var tdOrden=document.createElement("td");
                 tdOrden.innerText=contador;
                 var tdPrecio = document.createElement("td");
-                tdPrecio.innerText = "$"+precio;
+                tdPrecio.innerText = precio;
 
                 var carrito=document.createElement("tr");
                 var cantidad=document.createElement("td");
@@ -77,29 +77,18 @@ peticion.addEventListener("readystatechange",function(){
                 fila.appendChild(tdNombre);
                 fila.appendChild(tdPrecio);
                 listaProductos.append(fila);
+                if(parseInt(tdPrecio.innerHTML)>mayor){
+                    mayor=parseInt(tdPrecio.innerHTML);}
 
                 // Logica para eliminar un producto del carrito
                 var tdBorrar = document.createElement("td");
                 var botonBorrar = document.createElement("a");
                 botonBorrar.setAttribute("href","#");
                 botonBorrar.innerText = "x";
-
                 tdBorrar.appendChild(botonBorrar);
                 fila.appendChild(tdBorrar);
-
                 tdbody= document.querySelector("tbody")
                 tdbody.appendChild(fila);
-                //If para identificar producto mayor
-                if(precio>mayor){
-                    mayor=precio;
-                    filamayor= fila;
-                }
-                var botonCaro =document.querySelector("button");
-                botonCaro.addEventListener("click",function(){
-                    filamayor.className = "resaltar";
-                    console.log(filamayor);
-                });
-
                 botonBorrar.addEventListener("click", function (event) {
                     event.target.parentElement.parentElement.remove();
                     total = total - precio;
@@ -109,7 +98,15 @@ peticion.addEventListener("readystatechange",function(){
                 cantidades.innerText=contador;
                 var totalPro= document.querySelector("#total");
                 totalPro.innerText=total;
-                    //console.log("total: ", total);
+                
+                });
+                var botonCaro =document.querySelector("button");
+                botonCaro.addEventListener("click",function(){
+                    rowtd=fila.getElementsByTagName("td");
+                    if(parseInt(rowtd[2].innerHTML)==mayor){
+                        rowtd[2].classList.add("resaltar");
+                    }
+                console.log("el mayor es:", mayor);
                 });
                 });
             });
