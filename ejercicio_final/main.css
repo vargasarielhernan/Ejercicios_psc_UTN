@@ -131,6 +131,11 @@ button:hover{
     border-radius: 8px;
     color: white;
 }
+.resaltar:hover{
+    box-shadow: 5px 5px 20px rgb(0,0,0,0.4);
+    transform: translateY(-3%);
+    border-radius: 8px;
+}
 table{
 	background-color: white;
 	text-align: left;

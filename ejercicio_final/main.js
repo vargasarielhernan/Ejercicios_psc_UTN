@@ -5,7 +5,6 @@ var peticion= new XMLHttpRequest();
 peticion.open("GET", "productos.json", true);
 var total=0;
 var contador=0;
-var mayor=0;
 //obtener los productos del JSON
 peticion.addEventListener("readystatechange",function(){
     if(this.readyState==4&&this.status==200){
@@ -33,9 +32,7 @@ peticion.addEventListener("readystatechange",function(){
             var Descripcion=document.createElement("p");
             Descripcion.innerText= descripcion;
             var Precio=document.createElement("span");
-            Precio.innerText="$"+precio;
-
-            var divComprar= document.createElement("div");
+            Precio.innerText="$"+precio;var divComprar= document.createElement("div");
             var botonComprar=document.createElement("a");
             botonComprar.setAttribute("href","#");
             botonComprar.innerText="Añadir al carrito";
@@ -51,6 +48,7 @@ peticion.addEventListener("readystatechange",function(){
 
 
             botonComprar.addEventListener("click", function(){
+                event.preventDefault();
                 total = total + precio;
                 contador+=1;
                 //console.log("total: ", total);
@@ -74,9 +72,6 @@ peticion.addEventListener("readystatechange",function(){
                 fila.appendChild(tdNombre);
                 fila.appendChild(tdPrecio);
                 listaProductos.append(fila);
-                if(parseInt(tdPrecio.innerHTML)>mayor){
-                    mayor=parseInt(tdPrecio.innerHTML);}
-
                 // Logica para eliminar un producto del carrito
                 var tdBorrar = document.createElement("td");
                 var botonBorrar = document.createElement("a");
@@ -88,6 +83,7 @@ peticion.addEventListener("readystatechange",function(){
                 tdbody= document.querySelector("tbody")
                 tdbody.appendChild(fila);
                 botonBorrar.addEventListener("click", function (event) {
+                    event.preventDefault();
                     event.target.parentElement.parentElement.remove();
                     total = total - precio;
                     contador-=1;
@@ -98,16 +94,28 @@ peticion.addEventListener("readystatechange",function(){
                 totalPro.innerText=total;
                 
                 });
-                var botonCaro =document.querySelector("button");
-                botonCaro.addEventListener("click",function(){
-                    rowtd=fila.getElementsByTagName("td");
-                    if(parseInt(rowtd[1].innerHTML)==mayor){
-                        rowtd[1].classList.add("resaltar");
-                    }
-                console.log("el mayor es:", mayor);
-                });
                 });
             });
         }
     });
 peticion.send();
+//producto mas caro:
+var botonCaro =document.querySelector("button");
+botonCaro.addEventListener("click",function(){
+    var mayor=0;
+    var prodCarro = document.querySelector("#productos").children;
+    for (let index = 0; index < prodCarro.length; index++) {
+        const prodRow = prodCarro[index];
+        let pNombre = prodRow.children[0];
+        let pPrecio = Number(prodRow.children[1].innerText);
+        console.log(pNombre, pPrecio);
+        if(pPrecio>mayor){
+            mayor=pPrecio;
+            filaMayor=pNombre;
+        }
+    }
+    //console.log("el mayor es:", mayor);
+    //console.log(filaMayor);
+    
+    filaMayor.parentElement.className ="resaltar";
+});
